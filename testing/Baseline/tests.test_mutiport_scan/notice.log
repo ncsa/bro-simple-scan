@@ -3,8 +3,8 @@
 #empty_field	(empty)
 #unset_field	-
 #path	notice
-#open	2017-09-10-19-53-39
+#open	2017-09-10-20-02-32
 #fields	ts	uid	id.orig_h	id.orig_p	id.resp_h	id.resp_p	fuid	file_mime_type	file_desc	proto	note	msg	sub	src	dst	p	n	peer_descr	actions	suppress_for	dropped	remote_location.country_code	remote_location.region	remote_location.city	remote_location.latitude	remote_location.longitude
 #types	time	string	addr	port	addr	port	string	string	string	enum	enum	string	string	addr	addr	port	count	string	set[enum]	interval	bool	string	string	string	double	double
 1505072954.306835	-	-	-	-	-	-	-	-	-	Scan::Address_Scan	kk: 125.27.226.209 scanned at least 5 unique hosts on ports 80/tcp, 88/tcp, 8080/tcp in 0m0s	remote	125.27.226.209	-	-	-	bro	Notice::ACTION_LOG	3600.000000	F	-	-	-	-	-
-#close	2017-09-10-19-53-39
+#close	2017-09-10-20-02-32
