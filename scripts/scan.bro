@@ -7,7 +7,7 @@
 
 @load base/utils/time
 
-@load bro-is-darknet
+@load packages/bro-is-darknet
 
 module Scan;
 
