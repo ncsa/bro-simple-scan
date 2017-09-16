@@ -3,4 +3,6 @@ description = Simple, high performance tcp scan detection
 test_command = (cd testing && btest -d)
 script_dir = scripts
 tags = bro plugin, scan detection
-depends = bro/ncsa/bro-is-darknet
+depends =
+  bro >=2.5.1
+  bro/ncsa/bro-is-darknet
