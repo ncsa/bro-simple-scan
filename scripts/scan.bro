@@ -141,16 +141,16 @@ function analyze_unique_hostports(attempts: set[Attempt]): Notice::Info
             return [$note=Address_Scan, $msg=fmt("%s unique hosts on port %s", |victims|, p), $p=p];
             }
         }
-    if(|ports| <= 5)
-        {
-        local ports_string = join_string_set(ports_str, ", ");
-        return [$note=Address_Scan, $msg=fmt("%s unique hosts on ports %s", |victims|, ports_string)];
-        }
     if(|victims| == 1)
         {
         #Extract the single victim
         for (v in victims)
             return [$note=Port_Scan, $msg=fmt("%s unique ports on host %s", |ports|, v)];
+        }
+    if(|ports| <= 5)
+        {
+        local ports_string = join_string_set(ports_str, ", ");
+        return [$note=Address_Scan, $msg=fmt("%s unique hosts on ports %s", |victims|, ports_string)];
         }
     if(|victims| <= 5)
         {
