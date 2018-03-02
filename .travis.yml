@@ -1,0 +1,8 @@
+language: c
+sudo: required
+
+services:
+  - docker
+
+script:
+  - docker run -t -i --rm -v `pwd`:/bro-simple-scan  broplatform/bro:2.5.3-dev bro-pkg test /bro-simple-scan --version $(git rev-parse HEAD)
