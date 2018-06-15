@@ -5,4 +5,4 @@ script_dir = scripts
 tags = bro plugin, scan detection
 depends =
   bro >=2.5.1
-  bro/ncsa/bro-is-darknet *
+  bro/ncsa/bro-is-darknet >=0.3
