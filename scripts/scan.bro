@@ -250,10 +250,8 @@ function add_scan_attempt(scanner: addr, attempt: Attempt)
 @if ( Cluster::is_enabled() )
 ######################################
 # Cluster mode
-@if ( type_name(Cluster::worker2manager_events) == "pattern")
+@ifdef (Cluster::worker2manager_events)
    redef Cluster::worker2manager_events += /Scan::scan_attempt/;
-@else
-   redef Cluster::worker2manager_events += { "Scan::scan_attempt" };
 @endif
 
 function add_scan(id: conn_id)
@@ -274,7 +272,11 @@ function add_scan(id: conn_id)
         if ( attempt in recent_scan_attempts[scanner] )
             return;
         add recent_scan_attempts[scanner][attempt];
+@ifdef (Cluster::worker2manager_events)
         event Scan::scan_attempt(scanner, attempt);
+@else
+        Cluster::publish_hrw(Cluster::proxy_pool, scanner, Scan::scan_attempt, scanner, attempt);
+@endif
 
         # Check to see if we have already sent enough attempts
         # this is mostly reduntant due to the notice begin_suppression event
@@ -287,7 +289,7 @@ function add_scan(id: conn_id)
         }
     }
 
-@if ( Cluster::local_node_type() == Cluster::MANAGER )
+@if ( Cluster::local_node_type() != Cluster::WORKER )
 event Scan::scan_attempt(scanner: addr, attempt: Attempt)
     {
     add_scan_attempt(scanner, attempt);
