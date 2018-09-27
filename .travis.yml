@@ -4,5 +4,9 @@ sudo: required
 services:
   - docker
 
+env:
+  - ver: 2.5.3
+  - ver: master
+
 script:
-  - docker run -t -i --rm -v `pwd`:/bro-simple-scan  broplatform/bro:2.5.3-dev bro-pkg test /bro-simple-scan --version $(git rev-parse HEAD)
+  - docker run -t -i --rm -v `pwd`:/bro-simple-scan  broplatform/bro:${ver}-dev bro-pkg test /bro-simple-scan --version $(git rev-parse HEAD)
