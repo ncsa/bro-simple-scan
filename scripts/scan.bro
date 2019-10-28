@@ -316,13 +316,13 @@ function add_scan(id: conn_id)
 
 event connection_attempt(c: connection)
     {
-    if ( c$history == "S" )
+    if ( c$history == "S" || c$history == "SW")
         add_scan(c$id);
     }
 
 event connection_rejected(c: connection)
     {
-    if ( c$history == "Sr" )
+    if ( c$history == "Sr" || c$history == "SWr")
         add_scan(c$id);
     }
 
