@@ -6,7 +6,7 @@ services:
 
 env:
   - ver: 2.5.3
-  - ver: master
+  - ver: 3.0.0
 
 script:
   - docker run -t -i --rm -v `pwd`:/bro-simple-scan  broplatform/bro:${ver}-dev bro-pkg test /bro-simple-scan --version $(git rev-parse HEAD)
