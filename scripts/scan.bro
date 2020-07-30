@@ -7,7 +7,9 @@
 
 @load base/utils/time
 
+@ifndef(Site::darknet_mode)
 @load packages/bro-is-darknet
+@endif
 
 module Scan;
 
