@@ -4,5 +4,5 @@ test_command = (cd testing && btest -d)
 script_dir = scripts
 tags = bro plugin, scan detection
 depends =
-  bro >=2.5.1
-  ncsa/bro-is-darknet >=0.6
+  zeek >=3.0.0
+  ncsa/bro-is-darknet >=2.0
