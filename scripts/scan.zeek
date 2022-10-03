@@ -118,6 +118,7 @@ function adjust_known_scanner_expiration(s: table[addr] of interval, idx: addr):
     return duration;
 }
 
+@if ( !Cluster::is_enabled() || Cluster::local_node_type() != Cluster::WORKER )
 function analyze_unique_hostports(attempts: set[Attempt]): Notice::Info
 {
     local ports: set[port];
@@ -248,6 +249,7 @@ function add_scan_attempt(scanner: addr, attempt: Attempt)
         known_scanners[scanner] = 1hrs;
         }
     }
+@endif
 
 @if ( Cluster::is_enabled() )
 ######################################
