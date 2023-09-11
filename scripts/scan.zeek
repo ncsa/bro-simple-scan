@@ -56,35 +56,35 @@ export {
     ## Failed connection attempts are tracked until not seen for this interval.
     ## A higher interval will detect slower scanners, but may also yield more
     ## false positives.
-    const scan_timeout = 15min &redef;
+    option scan_timeout = 15min;
 
     ## The threshold of the number of darknet hosts a scanning host has to have
     ## scanned in order for the scan to be considered a darknet scan
-    const dark_host_threshold = 3 &redef;
+    option dark_host_threshold = 3;
 
     ## The threshold of the unique number of host+ports a remote scanning host
     ## has to have failed connections with
-    const scan_threshold = 25 &redef;
+    option scan_threshold = 25;
 
     ## The threshold of the unique number of host+ports a local scanning host
     ## has to have failed connections with
-    const local_scan_threshold = 250 &redef;
+    option local_scan_threshold = 250;
 
     ## The threshold of the unique number of host+ports a remote scanning host
     ## has to have failed connections with if it has passed dark_host_threshold
-    const scan_threshold_with_darknet_hits = 10 &redef;
+    option scan_threshold_with_darknet_hits = 10;
 
     ## The threshold of the unique number of host+ports a local scanning host
     ## has to have failed connections with if it has passed dark_host_threshold
-    const local_scan_threshold_with_darknet_hits = 100 &redef;
+    option local_scan_threshold_with_darknet_hits = 100;
 
     ## The threshold of the number of unique hosts a remote scanning host has
     ## to have failed connections with
-    const knockknock_threshold                   = 20 &redef;
+    option knockknock_threshold = 20;
 
     ## The threshold of the number of unique hosts a remote scanning host has
     ## to have failed connections with if it has passed dark_host_threshold
-    const knockknock_threshold_with_darknet_hits = 3  &redef;
+    option knockknock_threshold_with_darknet_hits = 3;
 
     ## Override this hook to ignore particular scan connections
     global Scan::scan_policy: hook(scanner: addr, victim: addr, scanned_port: port);
