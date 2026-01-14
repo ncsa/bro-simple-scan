@@ -17,25 +17,25 @@ export {
     redef enum Notice::Type += {
         ## Address scans detect that a host appears to be scanning some
         ## number of destinations on a single port. This notice is
-        ## generated when more than :bro:id:`Scan::scan_threshold`
+        ## generated when more than :zeek:id:`Scan::scan_threshold`
         ## unique hosts are seen over the previous
-        ## :bro:id:`Scan::scan_interval` time range.
+        ## :zeek:id:`Scan::scan_interval` time range.
         Address_Scan,
 
         ## Port scans detect that an attacking host appears to be
         ## scanning a single victim host on several ports.  This notice
         ## is generated when an attacking host attempts to connect to
-        ## :bro:id:`Scan::scan_threshold`
+        ## :zeek:id:`Scan::scan_threshold`
         ## unique ports on a single host over the previous
-        ## :bro:id:`Scan::scan_interval` time range.
+        ## :zeek:id:`Scan::scan_interval` time range.
         Port_Scan,
 
         ## Random scans detect that an attacking host appears to be
         ## scanning multiple victim hosts on several ports.  This notice
         ## is generated when an attacking host attempts to connect to
-        ## :bro:id:`Scan::scan_threshold`
+        ## :zeek:id:`Scan::scan_threshold`
         ## unique hosts and ports over the previous
-        ## :bro:id:`Scan::scan_interval` time range.
+        ## :zeek:id:`Scan::scan_interval` time range.
         Random_Scan,
     };
 
@@ -59,34 +59,34 @@ export {
     const scan_timeout = 15min &redef;
 
     ## The threshold of the number of darknet hosts a scanning host has to have
-    ## scanned in order for the scan to be considered a darknet scan
+    ## scanned in order for the scan to be considered a darknet scan.
     const dark_host_threshold = 3 &redef;
 
     ## The threshold of the unique number of host+ports a remote scanning host
-    ## has to have failed connections with
+    ## has to have failed connections with.
     const scan_threshold = 25 &redef;
 
     ## The threshold of the unique number of host+ports a local scanning host
-    ## has to have failed connections with
+    ## has to have failed connections with.
     const local_scan_threshold = 250 &redef;
 
     ## The threshold of the unique number of host+ports a remote scanning host
-    ## has to have failed connections with if it has passed dark_host_threshold
+    ## has to have failed connections with if it has passed dark_host_threshold.
     const scan_threshold_with_darknet_hits = 10 &redef;
 
     ## The threshold of the unique number of host+ports a local scanning host
-    ## has to have failed connections with if it has passed dark_host_threshold
+    ## has to have failed connections with if it has passed dark_host_threshold.
     const local_scan_threshold_with_darknet_hits = 100 &redef;
 
     ## The threshold of the number of unique hosts a remote scanning host has
-    ## to have failed connections with
+    ## to have failed connections with.
     const knockknock_threshold                   = 20 &redef;
 
     ## The threshold of the number of unique hosts a remote scanning host has
-    ## to have failed connections with if it has passed dark_host_threshold
+    ## to have failed connections with if it has passed dark_host_threshold.
     const knockknock_threshold_with_darknet_hits = 3  &redef;
 
-    ## Override this hook to ignore particular scan connections
+    ## Override this hook to ignore particular scan connections.
     global Scan::scan_policy: hook(scanner: addr, victim: addr, scanned_port: port);
 
 
