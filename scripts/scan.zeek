@@ -148,7 +148,7 @@ function analyze_unique_hostports(attempts: set[Attempt]): Notice::Info
         {
         #Extract the single victim
         for (v in victims)
-            return [$note=Port_Scan, $msg=fmt("%s unique ports on host %s", |ports|, v)];
+            return [$note=Port_Scan, $msg=fmt("%s unique ports on host %s", |ports|, v), $dst=v];
         }
     if(|ports| <= 5)
         {
